@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Misión Anti-Phishing</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+margin:0;font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#0f172a,#1e3a8a);
+color:#1e293b
+}
+.contenedor{max-width:950px;margin:auto;padding:25px}
+.pantalla{
+background:white;border-radius:20px;padding:30px;
+box-shadow:0 15px 40px #0005;margin-bottom:20px
+}
+.oculto{display:none}
+.portada{text-align:center;color:white;padding:45px 20px}
+.logo{
+font-size:34px;font-weight:bold;
+background:white;color:#173b8f;
+display:inline-block;padding:10px 20px;
+border-radius:8px;margin-bottom:20px
+}
+.academico{line-height:1.5}
+.separador{height:3px;background:#facc15;width:80px;margin:25px auto}
+.escudo{font-size:65px}
+h1{font-size:38px}
+h2{color:#1e3a8a}
+.btn{
+border:0;border-radius:10px;padding:14px 25px;
+font-weight:bold;cursor:pointer;font-size:16px
+}
+.btn-principal{background:#facc15;color:#172554}
+.btn-azul{background:#2563eb;color:white}
+.btn-verde{background:#16a34a;color:white}
+.instruccion{
+background:#eff6ff;border-left:5px solid #2563eb;
+padding:15px;margin:18px 0;border-radius:8px;line-height:1.5
+}
+.correo{
+border:1px solid #cbd5e1;border-radius:14px;
+overflow:visible
+}
+.cabecera{
+background:#f8fafc;padding:20px;
+border-bottom:1px solid #cbd5e1
+}
+.remitente{font-size:14px}
+.asunto{font-size:21px;font-weight:bold;margin-top:18px}
+.cuerpo{padding:25px;line-height:1.65}
+.pista{
+cursor:pointer;border-radius:5px;padding:3px
+}
+.pista:hover{background:#fff7ed;outline:2px dashed #f59e0b}
+.pista.encontrada{background:#dcfce7;outline:2px solid #16a34a}
+.explicacion{
+background:#f0fdf4;border:2px solid #22c55e;
+border-radius:10px;padding:14px;margin:8px 0 16px;
+animation:aparecer .3s
+}
+@keyframes aparecer{
+from{opacity:0;transform:translateY(-5px)}
+to{opacity:1;transform:translateY(0)}
+}
+.alerta{
+background:#fef2f2;border-left:5px solid #dc2626;
+padding:15px
+}
+.boton-correo{
+display:inline-block;background:#1a73e8;color:white;
+padding:12px 22px;border-radius:5px;font-weight:bold;
+cursor:pointer
+}
+.contador{
+margin-top:20px;background:#f8fafc;
+padding:15px;border-radius:8px;font-weight:bold
+}
+.opcion{
+display:block;width:100%;text-align:left;
+padding:16px;margin:12px 0;border:2px solid #cbd5e1;
+border-radius:10px;background:#f8fafc;cursor:pointer;
+font-size:15px
+}
+.opcion:hover{border-color:#2563eb;background:#eff6ff}
+.correcta{background:#dcfce7!important;border-color:#16a34a!important}
+.incorrecta{background:#fee2e2!important;border-color:#dc2626!important}
+.resultado{
+padding:15px;border-radius:10px;margin-top:18px
+}
+.verde{background:#dcfce7;border-left:5px solid #16a34a}
+.rojo{background:#fee2e2;border-left:5px solid #dc2626}
+.caso{
+background:#eff6ff;border:2px solid #2563eb;
+border-radius:15px;padding:22px;line-height:1.6
+}
+.fecha{color:#2563eb;font-weight:bold}
+.evento{margin:18px 0}
+.kit{
+background:#dbeafe;border:3px solid #2563eb;
+border-radius:15px;padding:22px;line-height:1.6
+}
+.recompensa{
+text-align:center;background:#fef3c7;
+border:2px solid #eab308;border-radius:15px;padding:25px
+}
+a{color:#1d4ed8;font-weight:bold}
+</style>
+</head>
+
+<body>
+
+<div class="contenedor">
+
+<!-- ================= INICIO ================= -->
+
+<section id="inicio" class="portada">
+
+<div class="logo">CNCI VIRTUAL</div>
+
+<div class="academico">
+<strong>Universidad CNCI</strong><br>
+Cultura Digital<br>
+Licenciatura en Tecnología Educativa<br>
+Docente: <strong>REEMPLAZAR CON TU NOMBRE</strong>
+</div>
+
+<div class="separador"></div>
+
+<div class="escudo">🛡️</div>
+
+<h1>¿Phishing o correo legítimo?</h1>
+
+<p>Has recibido un correo relacionado con la seguridad de una cuenta.</p>
+
+<p><strong>Tu misión es observar, investigar y decidir.</strong></p>
+
+<p>¿Podrás descubrir las señales que podrían revelar un intento de phishing?</p>
+
+<button class="btn btn-principal" onclick="iniciar()">
+INICIAR MISIÓN
+</button>
+
+</section>
+
+
+<!-- ================= CORREO ================= -->
+
+<section id="correo" class="pantalla oculto">
+
+<h2>📧 Investiga el correo</h2>
+
+<div class="instruccion">
+🔎 Haz clic directamente sobre los elementos del correo que consideres sospechosos.
+<br><br>
+Las pistas aparecerán inmediatamente después del elemento que investigues.
+<br><br>
+<strong>Este correo es una simulación educativa.</strong>
+</div>
+
+<div class="correo">
+
+<div class="cabecera">
+
+<strong>Google</strong>
+
+<div class="remitente">
+
+<span id="p1" class="pista" onclick="pista(1,'p1')">
+Google &lt;no-reply@accounts.googlemail.com&gt;
+</span>
+
+</div>
+
+<div id="e1"></div>
+
+<div id="p2" class="asunto pista" onclick="pista(2,'p2')">
+Alguien tiene tu contraseña
+</div>
+
+<div id="e2"></div>
+
+</div>
+
+
+<div class="cuerpo">
+
+<p>Hola John:</p>
+
+<div id="p3" class="pista" onclick="pista(3,'p3')">
+Alguien acaba de utilizar tu contraseña para intentar iniciar sesión en tu cuenta de Google.
+</div>
+
+<div id="e3"></div>
+
+<div class="alerta">
+<strong>Detalles del intento:</strong><br><br>
+Fecha: sábado, 19 de marzo<br>
+Dirección IP: 134.249.139.239<br>
+Ubicación: Ucrania
+</div>
+
+<p>Google detuvo este intento de inicio de sesión.</p>
+
+<div id="p4" class="pista" onclick="pista(4,'p4')">
+Debes cambiar tu contraseña <strong>inmediatamente</strong> para proteger tu cuenta.
+</div>
+
+<div id="e4"></div>
+
+<div style="text-align:center">
+<span id="p5" class="boton-correo pista"
+onclick="pista(5,'p5')">
+CAMBIAR CONTRASEÑA
+</span>
+</div>
+
+<div id="e5"></div>
+
+<p>
+Atentamente,<br>
+<strong>El equipo de Gmail</strong>
+</p>
+
+</div>
+</div>
+
+<div class="contador">
+🔎 Señales encontradas: <span id="contador">0</span> / 5
+</div>
+
+<div id="mensaje"></div>
+
+<br>
+
+<button class="btn btn-azul" onclick="comprobar()">
+COMPROBAR INVESTIGACIÓN
+</button>
+
+</section>
+
+
+<!-- ================= DECISIÓN ================= -->
+
+<section id="decision" class="pantalla oculto">
+
+<h2>🚨 Toma una decisión</h2>
+
+<p>Ya analizaste el mensaje.</p>
+
+<p>
+<strong>
+¿Qué harías si recibieras este correo en una cuenta académica o profesional?
+</strong>
+</p>
+
+<button class="opcion" onclick="decidir(this,false)">
+A. Hacer clic en el botón para resolver inmediatamente el problema.
+</button>
+
+<button class="opcion" onclick="decidir(this,false)">
+B. Responder al mensaje y pedir al remitente que confirme la alerta.
+</button>
+
+<button class="opcion" onclick="decidir(this,true)">
+C. Cerrar el mensaje, verificar la alerta directamente desde el sitio oficial y reportarla.
+</button>
+
+<button class="opcion" onclick="decidir(this,false)">
+D. Reenviar el mensaje a un compañero para que él decida si es confiable.
+</button>
+
+<div id="resultado"></div>
+
+</section>
+
+
+<!-- ================= CASO REAL ================= -->
+
+<section id="caso" class="pantalla oculto">
+
+<h2>🎉 ¡Decisión correcta!</h2>
+
+<div class="caso">
+
+<h2>⚠️ Un caso real: John Podesta</h2>
+
+<p>
+Antes de continuar, conoce el contexto del correo que
+acabaste de analizar.
+</p>
+
+<div class="evento">
+<div class="fecha">Marzo de 2016</div>
+
+<p>
+Durante la campaña presidencial de Estados Unidos,
+John Podesta, jefe de campaña de Hillary Clinton,
+recibió un correo que aparentaba ser una alerta
+de seguridad de Google.
+</p>
+</div>
+
+<div class="evento">
+<div class="fecha">El mensaje</div>
+
+<p>
+El correo advertía que alguien había utilizado su
+contraseña para intentar acceder a su cuenta.
+El mensaje indicaba que debía cambiar su contraseña
+para protegerla.
+</p>
+</div>
+
+<div class="evento">
+<div class="fecha">La trampa</div>
+
+<p>
+El mensaje utilizaba elementos que podían hacerlo
+parecer legítimo. El botón para cambiar la
+contraseña dirigía mediante un enlace acortado
+hacia un sitio controlado por los atacantes.
+</p>
+</div>
+
+<div class="evento">
+<div class="fecha">La consecuencia</div>
+
+<p>
+Al proporcionar sus credenciales en el sitio
+malicioso, los atacantes pudieron acceder a la
+cuenta. Posteriormente fueron sustraídos miles
+de correos electrónicos relacionados con la
+campaña.
+</p>
+</div>
+
+<div class="instruccion">
+
+<strong>💡 ¿Qué debemos aprender de este caso?</strong>
+
+<p>
+Un correo puede parecer auténtico, utilizar el
+nombre de una organización conocida y presentar
+una situación aparentemente urgente. Eso no
+significa que sea seguro.
+</p>
+
+<p>
+Ante una alerta de seguridad, la opción más segura
+es detenerse y verificar la situación directamente
+desde el sitio oficial o mediante un canal conocido,
+en lugar de utilizar el enlace incluido en el correo.
+</p>
+
+</div>
+
+<div class="instruccion">
+
+<strong>🎥 Recurso opcional</strong>
+
+<p>
+Si deseas conocer más sobre el caso, puedes
+consultar el siguiente video. Está en inglés,
+pero su consulta es opcional: la información
+necesaria para completar la actividad ya fue
+presentada en español.
+</p>
+
+<a href="https://www.youtube.com/results?search_query=John+Podesta+phishing+email"
+target="_blank">
+▶ Ver información adicional sobre el caso
+</a>
+
+</div>
+
+</div>
+
+<br>
+
+<button class="btn btn-verde" onclick="mostrarKit()">
+🔓 DESBLOQUEAR KIT ANTI-PHISHING
+</button>
+
+</section>
+
+
+<!-- ================= KIT ================= -->
+
+<section id="kit" class="pantalla oculto">
+
+<h2>🔓 Kit Anti-Phishing</h2>
+
+<div class="kit">
+
+<h3>🛡️ Kit Anti-Phishing del Profesional de Tecnología Educativa</h3>
+
+<ul>
+<li>Revisa cuidadosamente la dirección del remitente.</li>
+<li>Desconfía de mensajes que generan miedo o urgencia.</li>
+<li>No utilices enlaces inesperados para acceder a tus cuentas.</li>
+<li>Comprueba el sitio directamente desde su dirección oficial.</li>
+<li>Nunca proporciones contraseñas mediante enlaces sospechosos.</li>
+<li>Reporta los mensajes sospechosos por los canales establecidos.</li>
+</ul>
+
+<strong>Regla profesional:</strong><br>
+Detente → Verifica → Piensa → Decide.
+
+</div>
+
+<br>
+
+<button class="btn btn-azul" onclick="mostrarTicket()">
+CONTINUAR AL TICKET DE SALIDA
+</button>
+
+</section>
+
+
+<!-- ================= TICKET ================= -->
+
+<section id="ticket" class="pantalla oculto">
+
+<h2>📝 Ticket de salida</h2>
+
+<div class="instruccion">
+
+<strong>Pregunta 1</strong><br><br>
+
+¿Qué característica del correo te parece ahora
+indispensable revisar antes de hacer clic en un enlace?
+
+</div>
+
+<div class="instruccion">
+
+<strong>Pregunta 2</strong><br><br>
+
+Como futuro profesional de Tecnología Educativa,
+¿qué acción concreta realizarás para proteger tu
+información y la de los usuarios con los que trabajes?
+
+</div>
+
+<button class="btn btn-azul" onclick="mostrarRecompensa()">
+ABRIR TICKET DE SALIDA
+</button>
+
+<p>
+<small>
+En la versión final podemos sustituir este botón
+por el enlace de Google Forms.
+</small>
+</p>
+
+</section>
+
+
+<!-- ================= RECOMPENSA ================= -->
+
+<section id="recompensa" class="pantalla oculto">
+
+<div class="recompensa">
+
+<div style="font-size:60px">🏆</div>
+
+<h2>¡MISIÓN COMPLETADA!</h2>
+
+<p>
+Has analizado un posible intento de phishing,
+identificado señales de alerta y tomado una
+decisión responsable.
+</p>
+
+<hr>
+
+<h2>🎵 Recompensa final</h2>
+
+<h3>¡Alerta! ¡Protege tu Información!</h3>
+
+<div class="instruccion" style="text-align:center">
+
+<h3>🎵 ¡Alerta! ¡Protege tu Información!</h3>
+
+<p>
+¡Misión completada! Como recompensa final,
+escucha la canción creada durante este curso.
+</p>
+
+<!-- EL REPRODUCTOR APARECERÁ DESPUÉS DEL DESBLOQUEO -->
+
+<div id="reproductorCancion"></div>
+
+</div>
+
+<br>
+
+<h3>
+🛡️ Detente. Verifica. Piensa. Decide.
+</h3>
+
+<p>
+Proteger la información también es parte de tu
+responsabilidad como profesional de Tecnología Educativa.
+</p>
+
+<button class="btn btn-principal" onclick="salir()">
+CERRAR ACTIVIDAD
+</button>
+
+</div>
+
+</section>
+
+</div>
+
+
+<script>
+
+/* ===== VARIABLES ===== */
+
+let pistas = new Set();
+
+const textos = {
+
+1:`<strong>🔎 Pista 1 — Remitente</strong><br><br>
+Aunque aparece el nombre Google, es importante revisar
+la dirección completa del remitente y no confiar únicamente
+en el nombre mostrado.`,
+
+2:`<strong>🔎 Pista 2 — Alarma</strong><br><br>
+El asunto “Alguien tiene tu contraseña” genera miedo
+y busca provocar una reacción inmediata.`,
+
+3:`<strong>🔎 Pista 3 — Mensaje convincente</strong><br><br>
+El correo proporciona información específica sobre un
+supuesto intento de acceso, lo que puede hacerlo parecer
+más creíble.`,
+
+4:`<strong>🔎 Pista 4 — Urgencia</strong><br><br>
+La palabra “inmediatamente” presiona al usuario para
+actuar antes de verificar la situación.`,
+
+5:`<strong>🔎 Pista 5 — Enlace</strong><br><br>
+El botón es el punto crítico. En el caso real, el enlace
+acortado ocultaba el destino final. Nunca debes confiar
+automáticamente en un enlace incluido en una alerta.`
+};
+
+
+/* ===== INICIAR ===== */
+
+function iniciar(){
+
+document.getElementById("inicio").classList.add("oculto");
+document.getElementById("correo").classList.remove("oculto");
+
+}
+
+
+/* ===== PISTAS ===== */
+
+function pista(numero,id){
+
+if(pistas.has(numero)) return;
+
+pistas.add(numero);
+
+document.getElementById(id).classList.add("encontrada");
+
+document.getElementById("contador").innerText=pistas.size;
+
+document.getElementById("e"+numero).innerHTML=
+'<div class="explicacion">'+textos[numero]+'</div>';
+
+}
+
+
+/* ===== COMPROBAR ===== */
+
+function comprobar(){
+
+if(pistas.size>=3){
+
+document.getElementById("correo").classList.add("oculto");
+document.getElementById("decision").classList.remove("oculto");
+
+}else{
+
+document.getElementById("mensaje").innerHTML=
+'<div class="resultado rojo">🔎 Identifica al menos 3 señales para continuar.</div>';
+
+}
+
+}
+
+
+/* ===== DECISIÓN ===== */
+
+function decidir(elemento,correcta){
+
+if(correcta){
+
+elemento.classList.add("correcta");
+
+document.getElementById("resultado").innerHTML=
+'<div class="resultado verde"><strong>🟢 ¡Decisión segura!</strong><br><br>'+
+'Verificaste la alerta por una vía independiente y evitaste confiar en el enlace del mensaje.</div>';
+
+setTimeout(function(){
+
+document.getElementById("decision").classList.add("oculto");
+document.getElementById("caso").classList.remove("oculto");
+
+},1500);
+
+}else{
+
+elemento.classList.add("incorrecta");
+
+document.getElementById("resultado").innerHTML=
+'<div class="resultado rojo"><strong>🔴 Revisa tu decisión.</strong><br><br>'+
+'Esta opción todavía implica confiar en el mensaje o interactuar con él.</div>';
+
+}
+
+}
+
+
+/* ===== NAVEGACIÓN ===== */
+
+function mostrarKit(){
+
+document.getElementById("caso").classList.add("oculto");
+document.getElementById("kit").classList.remove("oculto");
+
+/* Crear el reproductor y comenzar la canción */
+document.getElementById("reproductorCancion").innerHTML = `
+<iframe
+    src="https://suno.com/embed/914f70c7-fc51-4aa7-8901-021fec8c5042?auto_play=true&autoplay=1"
+    width="100%"
+    height="180"
+    frameborder="0"
+    allow="autoplay"
+    style="border-radius:12px;">
+</iframe>
+`;
+
+}
+
+
+function mostrarTicket(){
+
+document.getElementById("kit").classList.add("oculto");
+document.getElementById("ticket").classList.remove("oculto");
+
+}
+
+
+function mostrarRecompensa(){
+
+document.getElementById("ticket").classList.add("oculto");
+document.getElementById("recompensa").classList.remove("oculto");
+
+}
+
+
+/* ===== CERRAR ACTIVIDAD ===== */
+
+function salir(){
+
+location.reload();
+
+}
+
+</script>
+
+</body>
+</html>
